@@ -1,0 +1,171 @@
+Use AllWebAppClasses.pkg
+Use cConnection.pkg
+
+//Register_Object oDashboard
+
+// each application will have a single place where view tasks are
+// defined. We will start with two but we expect developers will add their
+// own. 
+// Perhaps this belongs in a appsrc file to be autonomous.
+
+Enum_List
+    Define vtTaskDefault     // nothing special. The view can figure it out
+    Define vtTaskMaintenance // the list is used for simple maintenance purposes.
+    // add your own
+End_Enum_List
+
+Object oApplication is a cApplication
+
+    Object oConnection is a cConnection
+        Use LoginEncryption.pkg
+    End_Object
+
+End_Object
+
+Object oWebApp is a cWebApp
+    Set psTheme to "Df_Flat_Touch"
+    Set peAlignView to alignCenter
+    
+    // It is important to set this so that all views will default
+    // to drill down style views.
+    Set peApplicationStyle to wvsDrillDown    
+    Set psEncryptPassword to "#UsM4H%{[CL(eU<N6b:(R:JR,w:OI$?+2/]lWf56"
+    Set pbLogWebSession to False
+    Set peLoginMode to lmLoginNone
+
+    Object oViewStack is a cWebViewStack
+    End_Object
+    
+    Procedure HideHeader
+        WebSet pbRender of oHeaderPanel to False
+    End_Procedure
+
+    Procedure ShowHeader
+        WebSet pbRender of oHeaderPanel to True 
+    End_Procedure
+
+    Object oHeaderPanel is a cWebPanel
+        Set peRegion to prTop
+        Set psCSSClass to "HeaderPanel"
+        
+        Object oMenuPanel is a cWebPanel
+            Set peRegion to prLeft
+            Set piWidth to 50
+            
+            Object oMenuButton is a cWebMenuButton
+                Set piMenuHeight to 500
+
+                Object oDashboard_itm is a cWebMenuItem
+                    Set psCaption to C_$Dashboard
+
+                    Procedure OnClick
+                        Send NavigateBegin to oDashboard Self False
+                    End_Procedure
+                End_Object
+
+                Object oViewMenu is a cWebMenuItem
+                    Set psCaption to C_$View
+                    
+                    Object oSerialItem is a cWebMenuItem
+                        Set psCaption to "Serial Demo"
+                        
+                        Procedure OnClick
+                            Send NavigateForward to oDemoSerialChart Self
+                        End_Procedure
+                    End_Object
+                    
+                    Object oPieItem is a cWebMenuItem
+                        Set psCaption to "Pie Demo"
+                        
+                        Procedure OnClick
+                            Send NavigateForward to oDemoPieChart Self
+                        End_Procedure
+                    End_Object
+                End_Object
+
+                Object oSignOut_itm is a cWebMenuItem
+                    Set psCaption to C_$LogOut
+
+                    Procedure OnClick
+                        Send RequestLogOut of ghoWebSessionManager
+                    End_Procedure
+                End_Object
+            End_Object  
+
+            Object oBackButton is a cWebButton
+                Set psCSSClass to "WebBack_Icon"
+                Set pbRender to False
+                
+                Procedure OnClick
+                    Handle hoTop
+                    
+                    Get TopViewHandle of oViewStack to hoTop
+                    If (hoTop > 0) Begin
+                        Send NavigateCancel of hoTop 
+                    End
+                End_Procedure
+            End_Object
+            
+            Send AddClient of oViewStack Self
+                
+            Procedure OnUpdateViewStack
+                Handle hoTop hoDflt
+                Integer eMode
+                Boolean bTop
+                
+                WebGet peMode of ghoWebApp to eMode
+                
+                Get TopViewHandle of oViewStack to hoTop
+                Get GetDefaultView to hoDflt
+                Move (hoTop=0 or hoTop=hoDflt) to bTop
+                
+                WebSet pbRender of oBackButton to (not(bTop) and eMode >= rmMobile)
+                WebSet pbRender of oMenuButton to (bTop or eMode < rmMobile)
+            End_Procedure
+
+        End_Object
+
+        Object oCaptionPanel is a cWebPanel
+            Set piColumnCount to 12
+
+            Object oCaptionBreadcrumb is a cWebBreadcrumb
+                Set peBreadcrumbStyle to crumbCaption
+                WebSetResponsive peBreadcrumbStyle rmMobile to crumbDropDown
+            End_Object         
+        End_Object
+        
+        Object oActionPanel is a cWebPanel
+            Set peRegion to prRight
+            Set piColumnCount to 1
+            Set piWidth to 110
+
+            Object oMainActions is a cWebActionBar
+                Set psGroupName to "MainActions"
+
+                Set piColumnSpan to 0
+                Set peAlign to alignRight
+            End_Object
+        End_Object
+
+        Object oBreadcrumbPanel is a cWebPanel
+            Set peRegion to prBottom
+            
+            Object oHorizontalBreadcrumb is a cWebBreadcrumb
+                WebSetResponsive pbRender rmMobile to False
+            End_Object         
+        End_Object
+
+    End_Object    
+
+    Use SessionManager.wo
+    Use Login.wo
+    Use WebResourceManager.wo
+    
+    Use Dashboard.wo
+    Use DemoSerialChart.wo
+    Use DemoPieChart.wo
+    Set phoDefaultView to oDashboard
+
+End_Object
+
+Send StartWebApp of oWebApp

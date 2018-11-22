@@ -1,0 +1,71 @@
+Use cWebView.pkg
+Use cWebPanel.pkg
+Use cWebForm.pkg 
+Use cWebGroup.pkg
+Use cWebMenuGroup.pkg 
+Use cWebMenuItem.pkg
+Use cAmChart.pkg
+Use cWebButton.pkg
+
+Object oDemoSerialChart is a cWebView
+    Set peWebViewStyle to wvsDrillDown
+    Set peViewType to vtUndefined
+    Set pbShowCaption to True
+    Set Verify_Save_msg to 0 // don't confirm saves
+    
+    Set psCaption to "Demo: Serial Chart"
+
+    Set piMaxWidth to 1024
+    Set piColumnCount to 12
+
+    Object oWebMainPanel is a cWebPanel
+        Set piColumnCount to 12
+        WebSetResponsive piColumnCount rmMobile to 6
+
+        Object oAmChart1 is a cAmChart
+            Set piColumnSpan to 0
+            Set pbShowLabel to False
+            Set psChartConfig to '{"type":"serial","categoryField":"type","chartCursor":{},"graphs":[{"type":"column","title":"Pizza types","valueField":"sold","fillAlphas":0.8}],"dataProvider":[{"type":"Margherita","sold":120},{"type":"Funghi","sold":82},{"type":"Capricciosa","sold":78},{"type":"Quattro Stagioni","sold":71}]}'
+            Set piHeight to 400
+        End_Object
+
+        Object oWebButton1 is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Change chart"
+        
+            Procedure OnClick
+                WebSet psChartConfig of oAmChart1 to '{"type":"serial","categoryField":"category","categoryAxis":{"gridPosition":"start"},"graphs":[{"title":"Graph title","valueField":"column-1"}],"valueAxes":[{"title":"Axis title"}],"legend":{"useGraphSettings":true},"titles":[{"size":15,"text":"Chart Title"}],"dataProvider":[{"category":"category 1","column-1":8},{"category":"category 2","column-1":10}]}'
+            End_Procedure
+        End_Object
+
+        Object oWebButton2 is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Remove chart"
+            Set piColumnIndex to 3
+        
+            Procedure OnClick
+                WebSet psChartConfig of oAmChart1 to ''
+            End_Procedure
+        End_Object
+
+        Object oWebButton3 is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Set height to 200"
+            Set piColumnIndex to 6
+        
+            Procedure OnClick
+                WebSet piHeight of oAmChart1 to 200
+            End_Procedure
+        End_Object
+
+        Object oWebButton4 is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Set height to 400"
+            Set piColumnIndex to 9
+        
+            Procedure OnClick
+                WebSet piHeight of oAmChart1 to 400
+            End_Procedure
+        End_Object
+    End_Object 
+End_Object

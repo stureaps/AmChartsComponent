@@ -1,0 +1,40 @@
+Use cWebView.pkg
+Use cWebPanel.pkg
+Use cWebForm.pkg 
+Use cWebGroup.pkg
+Use cWebMenuGroup.pkg 
+Use cWebMenuItem.pkg
+Use cAmChart.pkg
+Use cWebLabel.pkg
+
+Object oDemoPieChart is a cWebView
+    Set peWebViewStyle to wvsDrillDown
+    Set peViewType to vtUndefined
+    Set Verify_Save_msg to 0 // don't confirm saves
+    
+    Set psCaption to "Demo: Pie Chart"
+
+    Set piMaxWidth to 1024
+    Set piColumnCount to 12
+
+    Object oWebMainPanel is a cWebPanel
+        Set piColumnCount to 12
+        WebSetResponsive piColumnCount rmMobile to 6
+
+        Object oAmChart1 is a cAmChart
+            Set pbFillHeight to True
+            Set pbShowLabel to False
+            Set piColumnSpan to 0
+            Set psChartConfig to '{"type":"pie","theme":"light","dataProvider":[{"country":"Lithuania","litres":501.9},{"country":"Czech Republic","litres":301.9},{"country":"Ireland","litres":201.1},{"country":"Germany","litres":165.8},{"country":"Australia","litres":139.9},{"country":"Austria","litres":128.3},{"country":"UK","litres":99},{"country":"Belgium","litres":60},{"country":"The Netherlands","litres":50}],"valueField":"litres","titleField":"country","balloon":{"fixedPosition":true}}'
+            Set pbServerOnClickSlice to True
+
+            Procedure OnClickSlice String sTitle
+                WebSet psCaption of oWebLabel1 to (SFormat("You clicked the slice '%1'", sTitle))
+            End_Procedure
+        End_Object
+
+        Object oWebLabel1 is a cWebLabel
+            Set piColumnSpan to 0
+        End_Object
+    End_Object 
+End_Object

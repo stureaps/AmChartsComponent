@@ -1,0 +1,32 @@
+Use cWebBaseControl.pkg
+
+Class cAmChart is a cWebBaseControl
+    
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        
+        Set psJSClass to "AmChartsComponent"
+
+        { WebProperty=Client }
+        Property String psChartConfig ""
+        
+        { WebProperty=Client }
+        Property Integer piHeight 0 // client-side this is actually defined and handled by WebBaseControl
+        
+        { WebProperty=Client }
+        Property Boolean pbServerOnClickSlice False
+        { WebProperty=Client }
+        Property String psClientOnClickSlice ""
+    End_Procedure
+
+    Procedure End_Construct_Object
+        Forward Send End_Construct_Object
+
+        WebPublishProcedure OnClickSlice
+    End_Procedure
+    
+    { MethodType=Event }
+    Procedure OnClickSlice String sTitle
+    End_Procedure
+
+End_Class

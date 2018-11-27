@@ -2,15 +2,13 @@
 
 A DataFlex custom component wrapper for the [amCharts library](https://www.amcharts.com/).
 
+Master branch is for amCharts v4. Use the "v3" branch for amCharts v3.
+
 ## Getting started
 
 Install [DataFlex](https://www.dataaccess.com/download/dfstudio/). This workspace is setup for version 19.0, but should be easy to migrate.
 
 Install [Node.js](https://nodejs.org/). Version 10 or later will do nicely.
-
-Install [Brunch](http://brunch.io/) using NPM:
-
-    > npm install -g brunch
 
 Install dependencies - from your AmChartsComponent folder run:
 

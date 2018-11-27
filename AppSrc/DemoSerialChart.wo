@@ -25,7 +25,7 @@ Object oDemoSerialChart is a cWebView
         Object oAmChart1 is a cAmChart
             Set piColumnSpan to 0
             Set pbShowLabel to False
-            Set psChartConfig to '{"type":"serial","categoryField":"type","chartCursor":{},"graphs":[{"type":"column","title":"Pizza types","valueField":"sold","fillAlphas":0.8}],"dataProvider":[{"type":"Margherita","sold":120},{"type":"Funghi","sold":82},{"type":"Capricciosa","sold":78},{"type":"Quattro Stagioni","sold":71}]}'
+            Set psChartConfig to '{"type":"XYChart","xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis"}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"USA","visits":3025},{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
             Set piHeight to 400
         End_Object
 
@@ -34,7 +34,7 @@ Object oDemoSerialChart is a cWebView
             Set psCaption to "Change chart"
         
             Procedure OnClick
-                WebSet psChartConfig of oAmChart1 to '{"type":"serial","categoryField":"category","categoryAxis":{"gridPosition":"start"},"graphs":[{"title":"Graph title","valueField":"column-1"}],"valueAxes":[{"title":"Axis title"}],"legend":{"useGraphSettings":true},"titles":[{"size":15,"text":"Chart Title"}],"dataProvider":[{"category":"category 1","column-1":8},{"category":"category 2","column-1":10}]}'
+                WebSet psChartConfig of oAmChart1 to '{"type":"XYChart","xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis"}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
             End_Procedure
         End_Object
 

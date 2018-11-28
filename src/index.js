@@ -15,7 +15,7 @@ class AmChartsComponent extends df.WebBaseControl {
 
     openHtml(aHtml) {
         super.openHtml(aHtml);
-        aHtml.push('<div>');
+        aHtml.push('<div class="AmChartsComponent">');
     }
 
     closeHtml(aHtml) {
@@ -38,6 +38,7 @@ class AmChartsComponent extends df.WebBaseControl {
     }
 
     setChartConfig(sType, sVal) {
+        this._eChart?.dispose();
         if (sVal) {
             const config = JSON.parse(sVal);
             this._eChart = core.createFromConfig(config, this._eControl, sType);

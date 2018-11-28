@@ -70,7 +70,7 @@ Object oWebApp is a cWebApp
                         Set psCaption to "Serial Demo"
                         
                         Procedure OnClick
-                            Send NavigateForward to oDemoSerialChart Self
+                            Send NavigateBegin to oDemoSerialChart Self False
                         End_Procedure
                     End_Object
                     
@@ -78,7 +78,7 @@ Object oWebApp is a cWebApp
                         Set psCaption to "Pie Demo"
                         
                         Procedure OnClick
-                            Send NavigateForward to oDemoPieChart Self
+                            Send NavigateBegin to oDemoPieChart Self False
                         End_Procedure
                     End_Object
                 End_Object

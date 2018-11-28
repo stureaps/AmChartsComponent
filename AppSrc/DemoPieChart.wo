@@ -16,6 +16,7 @@ Object oDemoPieChart is a cWebView
 
     Set piMaxWidth to 1024
     Set piColumnCount to 12
+    Set pbServerOnShow to True
 
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 12
@@ -25,7 +26,6 @@ Object oDemoPieChart is a cWebView
             Set pbFillHeight to True
             Set pbShowLabel to False
             Set piColumnSpan to 0
-            Set psChartConfig to '{"type":"PieChart","series":[{"type":"PieSeries","dataFields":{"value":"litres","category":"country"}}],"data":[{"country":"Lithuania","litres":501.9},{"country":"Czech Republic","litres":301.9},{"country":"Ireland","litres":201.1}],"innerRadius":"40%","legend":{"type":"Legend"}}'
             Set pbServerOnClickSlice to True
 
             Procedure OnClickSlice String sTitle
@@ -37,4 +37,9 @@ Object oDemoPieChart is a cWebView
             Set piColumnSpan to 0
         End_Object
     End_Object 
+
+    Procedure OnShow
+        Forward Send OnShow
+        Send SetChartConfig to oAmChart1 "PieChart" '{"series":[{"type":"PieSeries","dataFields":{"value":"litres","category":"country"}}],"data":[{"country":"Lithuania","litres":501.9},{"country":"Czech Republic","litres":301.9},{"country":"Ireland","litres":201.1}],"innerRadius":"40%","legend":{"type":"Legend"}}'
+    End_Procedure
 End_Object

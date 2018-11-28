@@ -17,6 +17,7 @@ Object oDemoSerialChart is a cWebView
 
     Set piMaxWidth to 1024
     Set piColumnCount to 12
+    Set pbServerOnShow to True
 
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 12
@@ -25,7 +26,6 @@ Object oDemoSerialChart is a cWebView
         Object oAmChart1 is a cAmChart
             Set piColumnSpan to 0
             Set pbShowLabel to False
-            Set psChartConfig to '{"type":"XYChart","xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis"}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"USA","visits":3025},{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
             Set piHeight to 400
         End_Object
 
@@ -34,7 +34,7 @@ Object oDemoSerialChart is a cWebView
             Set psCaption to "Change chart"
         
             Procedure OnClick
-                WebSet psChartConfig of oAmChart1 to '{"type":"XYChart","xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis"}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
+                Send SetChartConfig to oAmChart1 "XYChart" '{"xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis"}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
             End_Procedure
         End_Object
 
@@ -44,7 +44,7 @@ Object oDemoSerialChart is a cWebView
             Set piColumnIndex to 3
         
             Procedure OnClick
-                WebSet psChartConfig of oAmChart1 to ''
+                Send SetChartConfig to oAmChart1 "" ""
             End_Procedure
         End_Object
 
@@ -68,4 +68,9 @@ Object oDemoSerialChart is a cWebView
             End_Procedure
         End_Object
     End_Object 
+
+    Procedure OnShow
+        Forward Send OnShow
+        Send SetChartConfig to oAmChart1 "XYChart" '{"xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis"}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"USA","visits":3025},{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
+    End_Procedure
 End_Object

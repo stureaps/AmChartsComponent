@@ -8,9 +8,6 @@ class AmChartsComponent extends df.WebBaseControl {
     constructor(sName, oParent) {
         super(sName, oParent);
 
-        this.prop(df.tString, 'psChartConfig');
-        this.psChartConfig = '';
-
         this.event('OnClickSlice');
 
         this._eChart = null;
@@ -29,7 +26,6 @@ class AmChartsComponent extends df.WebBaseControl {
     afterRender() {
         super.afterRender();
         this._eControl = df.dom.query(this._eControlWrp, 'div');
-        this.set_psChartConfig(this.psChartConfig);
     }
 
     registerEventListeners(chart) {
@@ -41,10 +37,10 @@ class AmChartsComponent extends df.WebBaseControl {
         }
     }
 
-    set_psChartConfig(sVal) {
+    setChartConfig(sType, sVal) {
         if (sVal) {
             const config = JSON.parse(sVal);
-            this._eChart = core.createFromConfig(config, this._eControl, config.type);
+            this._eChart = core.createFromConfig(config, this._eControl, sType);
             this.registerEventListeners(this._eChart);
         } else {
             this._eChart = null;

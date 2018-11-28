@@ -7,8 +7,8 @@ Class cAmChart is a cWebBaseControl
         
         Set psJSClass to "AmChartsComponent"
 
-        { WebProperty=Client }
-        Property String psChartConfig ""
+//        { WebProperty=Client }
+//        Property String psChartConfig ""
         
         { WebProperty=Client }
         Property Integer piHeight 0 // client-side this is actually defined and handled by WebBaseControl
@@ -23,6 +23,13 @@ Class cAmChart is a cWebBaseControl
         Forward Send End_Construct_Object
 
         WebPublishProcedure OnClickSlice
+    End_Procedure
+    
+    Procedure SetChartConfig String sType String sJSON
+        String[] params
+        Move sType to params[0]
+        Move sJSON to params[1]
+        Send ClientAction "setChartConfig" params
     End_Procedure
     
     { MethodType=Event }

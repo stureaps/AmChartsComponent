@@ -1,0 +1,8 @@
+[Properties]
+Version=19.1
+[WorkspacePaths]
+ConfigFile=.\Programs\Config.ws
+[Conditionals]
+Is$WebApp=True
+[Projects]
+Project0=WebApp.src

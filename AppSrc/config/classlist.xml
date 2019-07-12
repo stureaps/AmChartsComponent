@@ -1,5 +1,6 @@
+<?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2017-01-19T07:15:12</VDFLibraryTimeStamp><libraries></libraries>
+	<VDFLibraryTimeStamp>2018-04-26T01:06:18</VDFLibraryTimeStamp><libraries></libraries>
 	<classes>
 		<class>
 			<className>cWebButton</className>
@@ -499,23 +500,9 @@
 			<libraryID>0</libraryID>
 		</class>
 		<class>
-			<className>Grid</className>
-			<image>ControlGrid_Depreciated.ico</image>
-			<package>Windows.pkg</package>
-			<groupName>Base Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
 			<className>LineControl</className>
 			<image>ControlLineControl.ico</image>
 			<package>dfLine.pkg</package>
-			<groupName>Base Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>List</className>
-			<image>ControlList_Depreciated.ico</image>
-			<package>Windows.pkg</package>
 			<groupName>Base Controls</groupName>
 			<libraryID>0</libraryID>
 		</class>
@@ -702,20 +689,6 @@
 			<libraryID>0</libraryID>
 		</class>
 		<class>
-			<className>dbGrid</className>
-			<image>ControldbGrid_Depreciated.ico</image>
-			<package>dfTable.pkg</package>
-			<groupName>Data Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>dbList</className>
-			<image>ControldbList_Depreciated.ico</image>
-			<package>dfSelLst.pkg</package>
-			<groupName>Data Controls</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
 			<className>dbParentCombo</className>
 			<image>ControldbComboForm.ico</image>
 			<package>dbParentCombo.pkg</package>
@@ -817,13 +790,6 @@
 			<className>OpenDialog</className>
 			<image>ControlOpenDialog.ico</image>
 			<package>File_dlg.pkg</package>
-			<groupName>Dialogs</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
-			<className>PrintDialog</className>
-			<image>ControlPrintDialog.ico</image>
-			<package>Prnt_dlg.pkg</package>
 			<groupName>Dialogs</groupName>
 			<libraryID>0</libraryID>
 		</class>
@@ -933,13 +899,6 @@
 			<libraryID>0</libraryID>
 		</class>
 		<class>
-			<className>cMapiHandler</className>
-			<image>ControlMapiHandler.ico</image>
-			<package>cMapiHandler.pkg</package>
-			<groupName>Others</groupName>
-			<libraryID>0</libraryID>
-		</class>
-		<class>
 			<className>cObject</className>
 			<image>ControlObject.ico</image>
 			<package>VdfBase.pkg</package>
@@ -1021,6 +980,13 @@
 			<image>cWebObject.ico</image>
 			<package>cAmChart.pkg</package>
 			<groupName>Web Controls</groupName><libraryID></libraryID>
+		</class>
+		<class>
+			<className>cWebListExpandPanel</className>
+			<image>cWebListExpandPanel.ico</image>
+			<package>cWebListExpandPanel.pkg</package>
+			<groupName>Web Containers</groupName>
+			<libraryID>0</libraryID>
 		</class>
 	</classes>
 </classList>

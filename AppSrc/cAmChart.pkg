@@ -7,9 +7,6 @@ Class cAmChart is a cWebBaseControl
         
         Set psJSClass to "AmChartsComponent"
 
-//        { WebProperty=Client }
-//        Property String psChartConfig ""
-        
         { WebProperty=Client }
         Property Integer piHeight 0 // client-side this is actually defined and handled by WebBaseControl
         

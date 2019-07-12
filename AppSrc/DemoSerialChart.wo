@@ -71,6 +71,6 @@ Object oDemoSerialChart is a cWebView
 
     Procedure OnShow
         Forward Send OnShow
-        Send SetChartConfig to oAmChart1 "XYChart" '{"xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis"}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"USA","visits":3025},{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
+        Send SetChartConfig to oAmChart1 "XYChart" '{"xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis","min":0}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":[{"country":"USA","visits":3025},{"country":"China","visits":1882},{"country":"Japan","visits":1809}]}'
     End_Procedure
 End_Object

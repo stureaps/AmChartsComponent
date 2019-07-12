@@ -1,18 +1,10 @@
-<OBJECT RUNAT=Server SCOPE=Session ID=WebAppServerSession PROGID="WebAppServer.Session.19.0">
-</OBJECT>
-
-<OBJECT RUNAT=Server SCOPE=Session ID=oSessionManager PROGID="WebAppServer.WebBusinessProcess.19.0">
-</OBJECT>
-
-<OBJECT RUNAT=Server SCOPE=Session ID=oWebResourceManager PROGID="WebAppServer.WebBusinessProcess.19.0">
+<OBJECT RUNAT=Server SCOPE=Session ID=WebAppServerSession PROGID="WebAppServer.Session.19.1">
 </OBJECT>
 
 <SCRIPT LANGUAGE=VBScript RUNAT=Server>
 SUB Session_OnStart
     WebAppServerSession.PageScopedSession=True
     WebAppServerSession.Initialize("AmChartsComponent")
-    oSessionManager.Name="oSessionManager"
-    oWebResourceManager.Name="oWebResourceManager"
     Session.Timeout=1
 
 END SUB

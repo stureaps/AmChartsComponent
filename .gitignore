@@ -25,6 +25,7 @@ node_modules/
 
 # Brunch output folder.
 AppHtml/amCharts/
+dist
 
 # DataFlex standard folders
 AppHtml/CssThemes/

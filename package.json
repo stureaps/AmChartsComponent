@@ -7,19 +7,21 @@
   "repository": "",
   "scripts": {
     "watch": "webpack --watch --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "dist": "rimraf dist && copyfiles -f \"%ProgramFiles(x86)%/DataFlex 19.1/Lib/WebAppMaster/Data/[Ww]eb[Aa]pp[Ss]erver[Pp]rops.*\" Data && npm run build && 7z a dist/AmChartsDemo.7z * -r -x!.git -x!.vscode -x!CssThemes -x!DfEngine -x!*.dep -x!*.prn -x!IdeSrc/* -x!node_modules -x!*.dbg -x!*.exe -x!*.log"
   },
   "devDependencies": {
-    "@amcharts/amcharts4": "^4.5.4",
-    "@babel/core": "^7.5.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-    "@babel/preset-env": "^7.5.4",
+    "@amcharts/amcharts4": "^4.7.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
-    "core-js": "^2.6.9",
+    "copyfiles": "^2.1.1",
+    "rimraf": "^3.0.0",
     "source-map-loader": "^0.2.4",
-    "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
-    "webpack-merge": "^4.2.1"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-merge": "^4.2.2"
   }
 }

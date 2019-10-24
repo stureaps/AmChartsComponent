@@ -2,10 +2,7 @@ module.exports = function (api) {
     api.cache.forever();
 
     const presets = [
-        ["@babel/preset-env", {
-            "useBuiltIns": "usage",
-            "corejs": 2
-        }]
+        "@babel/preset-env"
     ];
 
     const plugins = [

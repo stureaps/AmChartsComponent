@@ -11,6 +11,10 @@ Class cAmChart is a cWebBaseControl
         Property Integer piHeight 0 // client-side this is actually defined and handled by WebBaseControl
         
         { WebProperty=Client }
+        Property Boolean pbServerOnClick False
+        { WebProperty=Client }
+        Property String psClientOnClick ""
+        { WebProperty=Client }
         Property Boolean pbServerOnClickSlice False
         { WebProperty=Client }
         Property String psClientOnClickSlice ""
@@ -19,6 +23,7 @@ Class cAmChart is a cWebBaseControl
     Procedure End_Construct_Object
         Forward Send End_Construct_Object
 
+        WebPublishProcedure OnClick
         WebPublishProcedure OnClickSlice
     End_Procedure
     
@@ -29,8 +34,21 @@ Class cAmChart is a cWebBaseControl
         Send ClientAction "setChartConfig" params
     End_Procedure
     
+    Procedure ClockHandShowValue Integer iIndex Number nValue Integer iDuration
+        String[] params
+        Move iIndex to params[0]
+        Move nValue to params[1]
+        Move iDuration to params[2]
+        Send ClientAction "clockHandShowValue" params
+    End_Procedure
+    
+    { MethodType=Event }
+    Procedure OnClick String sType String sTitle1 String sTitle2
+    End_Procedure
+    
     { MethodType=Event }
     Procedure OnClickSlice String sTitle
+        // Deprecated
     End_Procedure
 
 End_Class

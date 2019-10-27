@@ -27,6 +27,11 @@ Object oDemoSerialChart is a cWebView
             Set piColumnSpan to 0
             Set pbShowLabel to False
             Set piHeight to 400
+            Set pbServerOnClick to True
+
+            Procedure OnClick String sType String sTitle1 String sTitle2
+                WebSet psCaption of oWebLabel1 to (SFormat("You clicked the %1 '%2/%3'", sType, sTitle1, sTitle2))
+            End_Procedure
         End_Object
 
         Object oWebButton1 is a cWebButton
@@ -66,6 +71,10 @@ Object oDemoSerialChart is a cWebView
             Procedure OnClick
                 WebSet piHeight of oAmChart1 to 400
             End_Procedure
+        End_Object
+
+        Object oWebLabel1 is a cWebLabel
+            Set piColumnSpan to 0
         End_Object
     End_Object 
 

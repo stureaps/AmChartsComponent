@@ -1,5 +1,6 @@
 Use AllWebAppClasses.pkg
 Use cConnection.pkg
+Use cWebMenuItem.pkg
 
 //Register_Object oDashboard
 
@@ -79,6 +80,17 @@ Object oWebApp is a cWebApp
                         
                         Procedure OnClick
                             Send NavigateBegin to oDemoPieChart Self False
+                        End_Procedure
+                    End_Object
+
+                    Object oDemoGaugeChartItem1 is a cWebMenuItem
+                        Set psCaption to "Gauge Demo"
+
+                        WebRegisterPath ntNavigateBegin oDemoGaugeChart
+
+                        Procedure OnClick
+                            Forward Send OnClick
+                            Send NavigatePath
                         End_Procedure
                     End_Object
                 End_Object
@@ -164,6 +176,7 @@ Object oWebApp is a cWebApp
     Use Dashboard.wo
     Use DemoSerialChart.wo
     Use DemoPieChart.wo
+    Use DemoGaugeChart.wo
     Set phoDefaultView to oDashboard
 
 End_Object

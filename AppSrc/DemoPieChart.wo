@@ -26,10 +26,15 @@ Object oDemoPieChart is a cWebView
             Set pbFillHeight to True
             Set pbShowLabel to False
             Set piColumnSpan to 0
-            Set pbServerOnClickSlice to True
+            Set pbServerOnClick to True
 
             Procedure OnClickSlice String sTitle
+                // this is now deprecated
                 WebSet psCaption of oWebLabel1 to (SFormat("You clicked the slice '%1'", sTitle))
+            End_Procedure
+
+            Procedure OnClick String sType String sTitle1 String sTitle2
+                WebSet psCaption of oWebLabel1 to (SFormat("You clicked the %1 '%2'", sType, sTitle1))
             End_Procedure
         End_Object
 

@@ -1,0 +1,50 @@
+Use cWebView.pkg
+Use cWebPanel.pkg
+Use cWebForm.pkg 
+Use cAmChart.pkg
+
+Object oDemoGaugeChart is a cWebView
+    Set psCaption to "Demo: Gauge Chart"
+
+    Set piMaxWidth to 1024
+    Set piColumnCount to 12
+    Set pbServerOnShow to True
+
+    // Your DDO structure will go here
+
+    Object oWebMainPanel is a cWebPanel
+        Set piColumnCount to 12
+        WebSetResponsive piColumnCount rmMobile to 6
+        
+        Object oAmChart1 is a cAmChart
+            Set piColumnSpan to 0
+            Set pbShowLabel to False
+            Set piHeight to 400
+        End_Object
+
+        Object oWebButton1 is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Move hand 1"
+        
+            Procedure OnClick
+                Send ClockHandShowValue of oAmChart1 0 (Random(100)) 1000
+            End_Procedure
+        End_Object
+
+        Object oWebButton2 is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Move hand 2"
+            Set piColumnIndex to 3
+        
+            Procedure OnClick
+                Send ClockHandShowValue of oAmChart1 1 (Random(100)) 1000
+            End_Procedure
+        End_Object
+    End_Object 
+
+    Procedure OnShow
+        Forward Send OnShow
+        Send SetChartConfig to oAmChart1 "GaugeChart" '{"innerRadius":-20,"xAxes":[{"type":"ValueAxis","min":0,"max":100,"strictMinMax":true,"axisRanges":[{"value":0,"endValue":70,"axisFill":{"fillOpacity":1,"fill":"#88AB75","zIndex":-1}},{"value":70,"endValue":90,"axisFill":{"fillOpacity":1,"fill":"#DBD56E","zIndex":-1}},{"value":90,"endValue":100,"axisFill":{"fillOpacity":1,"fill":"#DE8F6E","zIndex":-1}}]}],"hands":[{"type":"ClockHand","value":65,"fill":"#2D93AD","stroke":"#2D93AD","innerRadius":"50%","radius":"80%","startWidth":15,"pin":{"disabled":true}},{"type":"ClockHand","value":22,"fill":"#7D7C84","stroke":"#7D7C84","innerRadius":"50%","radius":"80%","startWidth":15,"pin":{"disabled":true}}]}'
+    End_Procedure
+
+End_Object

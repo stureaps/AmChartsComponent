@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2018-04-26T01:06:18</VDFLibraryTimeStamp><libraries></libraries>
+	<VDFLibraryTimeStamp>2018-04-26T00:06:18</VDFLibraryTimeStamp><libraries></libraries>
 	<classes>
 		<class>
 			<className>cWebButton</className>

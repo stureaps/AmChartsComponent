@@ -33,3 +33,8 @@ Copy client-side files into your application:
     > xcopy AppHtml\amCharts <path to app>\AppHtml\amCharts /e /i
 
 Either copy `AppSrc/cAmChart.pkg` to your application AppSrc folder, or add AmChartsComponent as a library ("Tools > Maintain Libraries... > Add Library...").
+
+Include the Core-JS polyfill and custom component in your index.html:
+
+    <script src="https://unpkg.com/core-js-bundle@3.3.3/minified.js"></script>
+    <script src="amCharts/index.js"></script>

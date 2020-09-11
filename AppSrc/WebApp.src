@@ -1,4 +1,4 @@
-Use AllWebAppClasses.pkg
+﻿Use AllWebAppClasses.pkg
 Use cConnection.pkg
 Use cWebMenuItem.pkg
 
@@ -93,6 +93,17 @@ Object oWebApp is a cWebApp
                             Send NavigatePath
                         End_Procedure
                     End_Object
+
+                    Object oDemoDynamicChartsItem is a cWebMenuItem
+                        Set psCaption to "Dynamic Demo"
+                        
+                        WebRegisterPath ntNavigateBegin oDemoDynamicCharts
+                        
+                        Procedure OnClick
+                            Forward Send OnClick
+                            Send NavigatePath
+                        End_Procedure
+                    End_Object
                 End_Object
 
                 Object oSignOut_itm is a cWebMenuItem
@@ -177,6 +188,7 @@ Object oWebApp is a cWebApp
     Use DemoSerialChart.wo
     Use DemoPieChart.wo
     Use DemoGaugeChart.wo
+    Use DemoDynamicCharts.wo
     Set phoDefaultView to oDashboard
 
 End_Object

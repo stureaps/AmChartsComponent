@@ -38,6 +38,10 @@ class AmChartsComponent extends df.WebBaseControl {
     afterRender() {
         super.afterRender();
         this._eControl = df.dom.query(this._eControlWrp, 'div');
+        if (!this.pbFillHeight) {
+            this.sizeHeight(-1);
+        }
+        this.sizeChanged(true);
     }
 
     registerEventListeners(chart) {
@@ -66,7 +70,6 @@ class AmChartsComponent extends df.WebBaseControl {
             this._eChart = null;
             this._eControl.innerHTML = '';
         }
-        this.sizeHeight(-1);
     }
 
     clockHandShowValue(index, value, duration) {
@@ -87,11 +90,11 @@ class AmChartsComponent extends df.WebBaseControl {
     onClick(type, target) {
         if (target.dataItem instanceof charts.ColumnSeriesDataItem) {
             // console.log('is a column');
-            this.fire('OnClick', [type, target.dataItem.categoryX, target.dataItem.categoryY]);
+            this.fire('OnClick', [type, target.dataItem.categoryX || '', target.dataItem.categoryY || '']);
         }
         if (target.dataItem instanceof charts.PieSeriesDataItem) {
             // console.log('is a slice');
-            this.fire('OnClick', [type, target.dataItem.category]);
+            this.fire('OnClick', [type, target.dataItem.category || '', '']);
         }
     }
 

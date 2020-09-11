@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <classList xmlns="http://www.dataaccess.com/VisualDataFlex/2006/classlist/">
-	<VDFLibraryTimeStamp>2018-04-26T01:06:18</VDFLibraryTimeStamp><libraries></libraries>
+	<VDFLibraryTimeStamp>2020-06-16T10:08:20</VDFLibraryTimeStamp><libraries></libraries>
 	<classes>
 		<class>
 			<className>cWebButton</className>
@@ -985,6 +985,27 @@
 			<className>cWebListExpandPanel</className>
 			<image>cWebListExpandPanel.ico</image>
 			<package>cWebListExpandPanel.pkg</package>
+			<groupName>Web Containers</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebGeoLocation</className>
+			<image>cWebGeoLocation.ico</image>
+			<package>cWebGeoLocation.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebHtmlList</className>
+			<image>cWebHtmlList.ico</image>
+			<package>cWebHtmlList.pkg</package>
+			<groupName>Web Controls</groupName>
+			<libraryID>0</libraryID>
+		</class>
+		<class>
+			<className>cWebDynamicObjectContainer</className>
+			<image>cWebGroup.ico</image>
+			<package>cWebDynamicObjectContainer.pkg</package>
 			<groupName>Web Containers</groupName>
 			<libraryID>0</libraryID>
 		</class>

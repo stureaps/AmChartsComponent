@@ -1,0 +1,93 @@
+﻿Use cWebView.pkg
+Use cWebPanel.pkg
+Use cWebForm.pkg 
+Use cWebGroup.pkg
+Use cWebMenuGroup.pkg 
+Use cWebMenuItem.pkg
+Use cWebDynamicObjectContainer.pkg
+Use cWebButton.pkg
+Use cAmChart.pkg
+Use cWebLabel.pkg
+
+Class cClickableAmChart is a cAmChart
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        
+        { WebProperty=Client }
+        Property Handle phOutput 0
+        
+        Set piColumnSpan to 0
+        Set pbShowLabel to False
+        Set piHeight to 400
+        Set pbServerOnClick to True
+    End_Procedure
+
+    Procedure OnClick String sType String sTitle1 String sTitle2
+        Handle hoOutput
+        WebGet phOutput to hoOutput
+        WebSet psCaption of hoOutput to (SFormat("You clicked the %1 '%2'", sType, sTitle1))
+    End_Procedure
+End_Class
+
+Object oDemoDynamicCharts is a cWebView
+    Set peWebViewStyle to wvsDrillDown
+    Set peViewType to vtUndefined
+    Set pbShowCaption to True
+    Set Verify_Save_msg to 0 // don't confirm saves
+    
+    Set psCaption to "Demo: Dynamic Charts"
+
+    Set piMaxWidth to 1024
+    Set piColumnCount to 12
+
+    Object oWebMainPanel is a cWebPanel
+        Set piColumnCount to 12
+        WebSetResponsive piColumnCount rmMobile to 6
+
+        Object oWebButton1 is a cWebButton
+            Set piColumnSpan to 3
+            Set psCaption to "Add chart"
+        
+            Procedure OnClick
+                Integer iUSA iChina iJapan
+                String sConfig sData
+                Move (Random(3500)) to iUSA
+                Move (Random(3500)) to iChina
+                Move (Random(3500)) to iJapan
+                Move (SFormat('[{"country":"USA","visits":%1},{"country":"China","visits":%2},{"country":"Japan","visits":%3}]', iUSA, iChina, iJapan)) to sData
+                Move (SFormat('{"xAxes":[{"type":"CategoryAxis","dataFields":{"category":"country"}}],"yAxes":[{"type":"ValueAxis","min":0}],"series":[{"type":"ColumnSeries","dataFields":{"categoryX":"country","valueY":"visits"},"name":"Web Traffic"}],"cursor":{},"data":%1}', sData)) to sConfig
+                Send AddChart of oWebDynamicObjectContainer "XYChart" sConfig
+            End_Procedure
+        End_Object
+
+        Object oWebLabel1 is a cWebLabel
+            Set psCaption to ""
+            Set piColumnIndex to 3
+            Set piColumnSpan to 9
+        End_Object
+        
+        Object oWebDynamicObjectContainer is a cWebDynamicObjectContainer
+            Set piColumnCount to 12
+            
+            { WebProperty=Client }
+            Property Integer piDynCount 0
+
+            Procedure AddChart String sType String sConfig
+                Integer iDynCount
+                String sObjectId
+                Handle hoChart
+                
+                WebGet piDynCount to iDynCount
+                Increment iDynCount
+                WebSet piDynCount to iDynCount
+                
+                Move (SFormat("oChart%1", iDynCount)) to sObjectId
+                
+                Get CreateDynamicObject (RefClass(cClickableAmChart)) sObjectId "" to hoChart
+                Send InitDynamicProp of hoChart "phOutput" (oWebLabel1(Self))
+                Send AppendDynamicObject sObjectId
+                Send SetChartConfig of hoChart sType sConfig
+            End_Procedure
+        End_Object
+    End_Object 
+End_Object

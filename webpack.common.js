@@ -8,7 +8,6 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, 'AppHtml', 'amCharts'),
-        filename: '[name].js',
         chunkFilename: '[name].js',
         publicPath: 'amCharts/'
     },

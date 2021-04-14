@@ -12,7 +12,7 @@ Install [Node.js](https://nodejs.org/). Version 12 or later will do nicely.
 
 Install dependencies - from your AmChartsComponent folder run:
 
-    > npm install
+    > npm ci
 
 Build the component client-side files (will be placed in `AppHtml/amCharts/`):
 

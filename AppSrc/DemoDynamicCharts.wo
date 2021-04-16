@@ -76,16 +76,23 @@ Object oDemoDynamicCharts is a cWebView
                 Integer iDynCount
                 String sObjectId
                 Handle hoChart
+                Boolean bActivated
                 
                 WebGet piDynCount to iDynCount
                 Increment iDynCount
                 WebSet piDynCount to iDynCount
+                WebGet pbActivated to bActivated
                 
                 Move (SFormat("oChart%1", iDynCount)) to sObjectId
                 
                 Get CreateDynamicObject (RefClass(cClickableAmChart)) sObjectId "" to hoChart
                 Send InitDynamicProp of hoChart "phOutput" (oWebLabel1(Self))
-                Send AppendDynamicObject sObjectId
+                If (not(bActivated)) Begin
+                    Send Activate
+                End
+                Else Begin
+                    Send AppendDynamicObject sObjectId
+                End
                 Send SetChartConfig of hoChart sType sConfig
             End_Procedure
         End_Object

@@ -18,6 +18,7 @@ class AmChartsComponent extends df.WebBaseControl {
     constructor(sName, oParent) {
         super(sName, oParent);
 
+        this.event('OnClick');
         this.event('OnClickSlice');
 
         decimalSeparator = this.getWebApp().psDecimalSeparator;

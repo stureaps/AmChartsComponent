@@ -4,6 +4,6 @@ Version=20.0
 ConfigFile=.\Programs\Config.ws
 [Conditionals]
 Is$WebApp=True
-Is$Win64=False
+Is$Win64=True
 [Projects]
 Project0=WebApp.src

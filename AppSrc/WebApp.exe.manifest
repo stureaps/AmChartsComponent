@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
-	<assemblyIdentity version="1.0.0.0" processorArchitecture="X86" name="DAW.DataFlex.WebApp.src" type="win32"></assemblyIdentity>
+	<assemblyIdentity version="1.0.0.0" processorArchitecture="amd64" name="DAW.DataFlex.WebApp.src" type="win32"></assemblyIdentity>
 	<description>WebApp.src</description>
 	<dependency>
 		<dependentAssembly>
-			<assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="X86" publicKeyToken="6595b64144ccf1df" language="*"></assemblyIdentity>
+			<assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="amd64" publicKeyToken="6595b64144ccf1df" language="*"></assemblyIdentity>
 		</dependentAssembly>
 	</dependency>
 	<v3:trustInfo xmlns:v3="urn:schemas-microsoft-com:asm.v3">

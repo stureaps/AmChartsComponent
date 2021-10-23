@@ -8,7 +8,7 @@ Master branch is for amCharts v4. Use the "v3" branch for amCharts v3.
 
 Install [DataFlex](https://www.dataaccess.com/download/dfstudio/). This workspace is setup for version 20.0, but should be easy to migrate.
 
-Install [Node.js](https://nodejs.org/). Version 12 or later will do nicely.
+Install [Node.js](https://nodejs.org/). At least version 12.13 is required.
 
 Install dependencies - from your AmChartsComponent folder run:
 
@@ -36,5 +36,5 @@ Either copy `AppSrc/cAmChart.pkg` to your application AppSrc folder, or add AmCh
 
 Include the Core-JS polyfill and custom component in your index.html:
 
-    <script src="https://unpkg.com/core-js-bundle@3.6.5/minified.js"></script>
+    <script src="https://unpkg.com/core-js-bundle@3.18.3/minified.js"></script>
     <script src="amCharts/index.js"></script>
